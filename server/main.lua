@@ -5,8 +5,15 @@ local DamageEvent = import('modules.weapon_damage')
 local CombatLog = import('modules.combat_log')
 local inCombatMode = {}
 
+RegisterCommand('randomData', function()
+    for i=1, 50 do
+        Wait(math.random(1000, 5000))
+        inCombatMode[i] = math.random(1, Config.CombatModeTime)
+    end
+end, false)
+
 if Config.CombatMode then
-    DamageEvent.onDamage(function(source, target)
+    DamageEvent.onDamaged(function(source, target)
         if not inCombatMode[source] then
             inCombatMode[source] = true
         end
@@ -15,6 +22,21 @@ if Config.CombatMode then
         end
         inCombatMode[source] = Config.CombatModeTime
         inCombatMode[target] = Config.CombatModeTime
+    end)
+
+    CreateThread(function()
+        while true do
+            Wait(1000)
+            for k,v in pairs(inCombatMode) do
+                if not inCombatMode[k] then goto continue end
+                if v > 0 then
+                    inCombatMode[k] = v - 1
+                else
+                    inCombatMode[k] = nil
+                end
+                ::continue::
+            end
+        end
     end)
 end
 

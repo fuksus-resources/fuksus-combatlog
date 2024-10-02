@@ -10,10 +10,9 @@ DamageEvent.onDamaged = function(cb)
 end
 
 DamageEvent.triggerLoaded = function(...)
-    for i = 1, #DamageEvent.callbacks do
-        local cb = DamageEvent.callbacks[i]
-        if cb.resource == GetInvokingResource() then
-            cb.cb(...)
+    for k,v in pairs(DamageEvent.callbacks) do
+        if v.resource == GetInvokingResource() then
+            v.cb(...)
         end
     end
 end

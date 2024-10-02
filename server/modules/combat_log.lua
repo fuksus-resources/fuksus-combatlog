@@ -15,4 +15,13 @@ CreateThread(function()
     end
 end)
 
+RegisterNetEvent('fuksus-combatlog:addCache', function()
+    local _source = source
+    local name = GetPlayerName(_source)
+    cachedPlayers[_source] = {
+        name = name,
+        source = _source
+    }
+end)
+
 return CombatLog
