@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Locale = 'en'
+Config.Locale = 'lt'
 
 Config.CombatLog = true
 Config.CombatLogTimeout = 30 -- This is seconds
