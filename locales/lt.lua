@@ -3,5 +3,6 @@ Locales['lt'] = {
     ['source'] = 'ID',
     ['left.time'] = 'Atsijunge',
     ['disconnected'] = 'Žaidejas atsijunge',
-    ['reason'] = 'Priežastis'
+    ['reason'] = 'Priežastis',
+    ['in.combat'] = 'VIDURY ŠAUDYMOSI'
 }

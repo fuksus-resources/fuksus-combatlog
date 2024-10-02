@@ -3,5 +3,6 @@ Locales['en'] = {
     ['source'] = 'Source',
     ['left.time'] = 'Left at',
     ['disconnected'] = 'Player disconnected',
-    ['reason'] = 'Reason'
+    ['reason'] = 'Reason',
+    ['in.combat'] = 'MID COMBAT'
 }

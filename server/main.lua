@@ -8,7 +8,6 @@ local inCombatMode = {}
 if Config.CombatMode then
     DamageEvent.onDamaged(function(source, target)
         if not inCombatMode[source] then
-            print('Player is in combat')
             inCombatMode[source] = true
         end
         if not inCombatMode[target] then
@@ -45,6 +44,7 @@ AddEventHandler('playerDropped', function(reason)
     local ped = GetPlayerPed(_source)
     if inCombatMode[_source] then
         inCombatMode[_source] = nil
+        reason = reason .. '(' .. L('in.combat') .. ')'
         TriggerEvent('fuksus-combatlog:combatLogOff', _source)
     end
     if Config.CombatLog then
