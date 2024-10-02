@@ -5,7 +5,7 @@ lua54 'yes'
 
 author 'Fuksus <https://resources.fuksus.com/>'
 description 'Fuksus combatlog'
-version '0.0.2'
+version '1.0.0'
 
 client_scripts {
     'imports.lua',
