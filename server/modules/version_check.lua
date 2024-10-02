@@ -33,7 +33,7 @@ local function checkVersion()
                 if current ~= minimum then
                     if current < minimum then
                         print('^8--------------------^7[^5INFO^7]^8-----------------')
-                        print(('^3An update is available for %s (current version: %s)\r\n%s^0'):format(resource, currentVersion, 'Get the latest version at your https://keymaster.fivem.net/'))
+                        print(('^3An update is available for %s (current version: %s)\r\n%s^0'):format(resource, currentVersion, 'Get the latest version at https://github.com/fuksus-resources/fuksus-combatlog/releases'))
                         print('^8--------------------------------------------^7')
                         return
                     else break end

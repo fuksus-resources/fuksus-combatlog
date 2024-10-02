@@ -3,7 +3,9 @@ Config = {}
 Config.Locale = 'en'
 
 Config.CombatLog = true
-Config.CombatLogTimeout = 10 -- This is seconds
+Config.CombatLogTimeout = 30 -- This is seconds
+Config.CombatLogEntity = `s_m_m_strperf_01` -- If nil there would be no entity
+Config.CombatLogShowDistance = 4.0
 Config.CombatMode = true
 Config.CombatModeTime = 10 -- This is seconds
 

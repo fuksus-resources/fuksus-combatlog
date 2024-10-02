@@ -1,9 +1,12 @@
 local cachedPlayers = {}
 local CombatLog = {}
 
-CombatLog.sendLog = function(source, coords)
-    print(cachedPlayers[tonumber(source)].name)
-    TriggerClientEvent('fuksus-combatlog:sendLog', -1, cachedPlayers[tonumber(source)], coords)
+CombatLog.sendLog = function(source, coords, reason)
+    if not cachedPlayers[tonumber(source)] then return end
+    cachedPlayers[tonumber(source)].reason = reason
+    cachedPlayers[tonumber(source)].coords = coords
+    cachedPlayers[tonumber(source)].time = os.date('%H:%M:%S')
+    TriggerClientEvent('fuksus-combatlog:sendLog', -1, cachedPlayers[tonumber(source)])
 end
 
 CreateThread(function()
@@ -12,7 +15,8 @@ CreateThread(function()
         print('Cached player', playerId, name)
         cachedPlayers[tonumber(playerId)] = {
             name = name,
-            source = playerId
+            source = playerId,
+            license = GetPlayerIdentifierByType(playerId, 'license'),
         }
     end
 end)

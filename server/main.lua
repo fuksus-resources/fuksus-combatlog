@@ -5,13 +5,6 @@ local DamageEvent = import('modules.weapon_damage')
 local CombatLog = import('modules.combat_log')
 local inCombatMode = {}
 
-RegisterCommand('randomData', function()
-    for i=1, 50 do
-        Wait(math.random(1000, 5000))
-        inCombatMode[i] = math.random(1, Config.CombatModeTime)
-    end
-end, false)
-
 if Config.CombatMode then
     DamageEvent.onDamaged(function(source, target)
         if not inCombatMode[source] then
@@ -43,11 +36,11 @@ end
 
 RegisterCommand('test', function(source)
     local ped = GetPlayerPed(source)
-    CombatLog.sendLog(source, GetEntityCoords(ped))
+    CombatLog.sendLog(source, GetEntityCoords(ped), 'Exiting')
 end, false)
 
 -- Clearing memory
-AddEventHandler('playerDropped', function()
+AddEventHandler('playerDropped', function(reason)
     local _source = source
     local ped = GetPlayerPed(_source)
     if inCombatMode[_source] then
@@ -55,7 +48,7 @@ AddEventHandler('playerDropped', function()
         TriggerEvent('fuksus-combatlog:combatLogOff', _source)
     end
     if Config.CombatLog then
-        CombatLog.sendLog(_source, GetEntityCoords(ped))
+        CombatLog.sendLog(_source, GetEntityCoords(ped), reason)
     end
 end)
 
