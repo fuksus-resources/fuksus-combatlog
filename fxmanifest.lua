@@ -4,7 +4,7 @@ game 'gta5'
 lua54 'yes'
 
 author 'Fuksus <https://resources.fuksus.com/>'
-description 'Fuksus resource lua without ui template'
+description 'Fuksus combatlog'
 version '0.0.0'
 
 client_scripts {
@@ -32,14 +32,6 @@ files {
 
 dependencies {
     '/server:6116',
-    '/onesync'
-}
-
-escrow_ignore {
-    'locale.lua',
-    'imports.lua',
-    'locales/*.lua',
-    'client/bridge/*.lua',
-    'server/bridge/*.lua',
-    'shared/*.lua'
+    '/onesync',
+    'ox_lib'
 }
