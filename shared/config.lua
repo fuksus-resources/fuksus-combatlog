@@ -12,8 +12,8 @@ Config.DrawDistance = 50.0
 Config.Marker = {
     type = 32,
     color = { r = 0, g = 255, b = 0, a = 100 },
-    scale = { x = 1.0, y = 1.0, z = 1.0 },
+    scale = { x = 1.0, y = 2.0, z = 1.0 },
     rotate = false,
-    bobUpAndDown = false,
+    bobUpAndDown = true,
     faceCamera = false,
 }

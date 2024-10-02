@@ -15,6 +15,7 @@ end, false)
 if Config.CombatMode then
     DamageEvent.onDamaged(function(source, target)
         if not inCombatMode[source] then
+            print('Player is in combat')
             inCombatMode[source] = true
         end
         if not inCombatMode[target] then
@@ -40,14 +41,21 @@ if Config.CombatMode then
     end)
 end
 
+RegisterCommand('test', function(source)
+    local ped = GetPlayerPed(source)
+    CombatLog.sendLog(source, GetEntityCoords(ped))
+end, false)
+
 -- Clearing memory
 AddEventHandler('playerDropped', function()
     local _source = source
+    local ped = GetPlayerPed(_source)
     if inCombatMode[_source] then
         inCombatMode[_source] = nil
+        TriggerEvent('fuksus-combatlog:combatLogOff', _source)
     end
     if Config.CombatLog then
-        CombatLog.sendLog(_source)
+        CombatLog.sendLog(_source, GetEntityCoords(ped))
     end
 end)
 
