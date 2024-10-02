@@ -38,7 +38,7 @@ CombatLog.add = function(data)
 
     function point:nearby()
         if self.currentDistance <= Config.CombatLogShowDistance then
-            DrawText3D(self.coords, string.format('~r~Player disconnected~w~\nReason: ~y~%s~w~\nSource: ~y~%s~w~\nLicense: ~y~%s~w~\nLeft at: ~b~%s~w~', self.data.reason, self.data.source, self.data.license, self.data.time))
+            DrawText3D(self.coords, string.format('~r~Player disconnected~w~\nReason: ~y~%s~w~\nSource: ~p~%s~w~\nLicense: ~p~%s~w~\nLeft at: ~b~%s~w~', self.data.reason, self.data.source, self.data.license, self.data.time))
             if not entities[self.id] then
                 entities[self.id] = Entity.create(self.coords)
             end
